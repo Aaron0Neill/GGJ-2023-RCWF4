@@ -17,6 +17,10 @@ public:
 	void render()override;
 
 private:
+	sf::Font m_font;
+	sf::Text m_startScreenText;
+	void checkMousePosition(sf::Event t_event);
+	void setupText();
 };
 
 #endif
