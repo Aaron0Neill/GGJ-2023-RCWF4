@@ -3,6 +3,8 @@
 
 #include "SceneManager.h"
 
+#include "Player.h"
+
 class ExampleScene :
 	public IBaseScene
 {
@@ -17,6 +19,7 @@ public:
 	void render()override;
 
 private:
+	Player m_player;
 };
 
 #endif
