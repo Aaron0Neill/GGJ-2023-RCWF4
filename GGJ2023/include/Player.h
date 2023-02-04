@@ -9,6 +9,7 @@ class Player
 {
 public: 
 	Player(sf::RenderWindow* t_window);
+	~Player();
 
 	void render(sf::RenderWindow* t_window);
 
@@ -21,6 +22,8 @@ public:
 	void fall();
 
 	void fireSpell();
+
+	std::list <IBaseSpell*>& const getSpells() { return m_spellManager.getSpells(); }
 private:
 	void checkLevel();
 

@@ -9,6 +9,7 @@ Fireball::Fireball(sf::Vector2f t_direction, sf::Vector2f t_position) :
 	m_body.setPosition(t_position);
 	m_speed = 150;
 	m_timeToLive = 10;
+	m_damage = 5;
 }
 
 void Fireball::update(sf::Time t_dt)

@@ -10,6 +10,7 @@ Enemy::Enemy(sf::Vector2f t_startPos)
 	m_body.setSize({ 50,200 });
 	m_body.setPosition(t_startPos);
 	m_body.setFillColor(sf::Color::Red);
+	m_health = 5;
 
 	std::cout << "Enemy Created\n";
 }

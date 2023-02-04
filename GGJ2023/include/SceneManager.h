@@ -10,7 +10,8 @@
 enum class SceneTypes : uint8_t
 {
 	EXAMPLE,
-	EXAMPLE_TRANS
+	EXAMPLE_TRANS,
+	GAMEPLAY
 };
 
 using Scene = std::unique_ptr<IBaseScene>;

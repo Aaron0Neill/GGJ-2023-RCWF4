@@ -16,6 +16,8 @@ public:
 	virtual int getDmg() { return m_damage; }
 	virtual float getTimeToLive() { return m_timeToLive; }
 
+	virtual sf::FloatRect getGlobalBounds() = 0;
+
 protected:
 	sf::Vector2f m_direction;
 	float m_speed;

@@ -14,6 +14,10 @@ public:
 
 	void render(sf::RenderWindow* t_window);
 
+	sf::FloatRect getGlobalBound() { return m_body.getGlobalBounds(); }
+
+	int m_health;
+
 private:
 	friend class EnemyManager;
 	float m_movementSpeed { 100.0f };

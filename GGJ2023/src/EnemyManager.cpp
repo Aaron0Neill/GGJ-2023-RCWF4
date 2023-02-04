@@ -61,6 +61,8 @@ void EnemyManager::testRemove()
 	}
 }
 
+
+
 void EnemyManager::spawnEnemy(sf::Vector2f& t_pos, unsigned number)
 {
 	for (int i = 0; i < number; ++i)

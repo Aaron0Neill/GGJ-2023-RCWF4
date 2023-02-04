@@ -9,6 +9,7 @@ SeedPellet::SeedPellet(sf::Vector2f t_direction, sf::Vector2f t_position) :
 	m_body.setPosition(t_position);
 	m_speed = 100;
 	m_timeToLive = 8;
+	m_damage = 3;
 }
 
 void SeedPellet::update(sf::Time t_dt)

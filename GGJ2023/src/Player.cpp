@@ -14,6 +14,11 @@ Player::Player(sf::RenderWindow* t_window) :
 		m_trackingLine[i].color = sf::Color::Red;
 }
 
+Player::~Player()
+{
+
+}
+
 //************************************************************************
 
 void Player::render(sf::RenderWindow* t_window)

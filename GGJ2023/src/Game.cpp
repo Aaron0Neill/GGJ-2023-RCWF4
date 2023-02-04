@@ -12,8 +12,9 @@ void Game::init()
 
 	m_manager->registerScene<ExampleScene>(SceneTypes::EXAMPLE);
 	m_manager->registerScene<ExampleTransitionScene>(SceneTypes::EXAMPLE_TRANS);
+	m_manager->registerScene<GameplayScene>(SceneTypes::GAMEPLAY);
 
-	m_manager->setScene(SceneTypes::EXAMPLE);
+	m_manager->setScene(SceneTypes::GAMEPLAY);
 }
 
 void Game::run()

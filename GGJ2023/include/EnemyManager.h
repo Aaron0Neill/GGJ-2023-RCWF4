@@ -20,6 +20,8 @@ public:
 	void removeEnemy(Enemy* t_enemy);
 
 	void testRemove();
+
+	std::list<Enemy*>& const getEnemyList() { return m_enemyList; }
 private:
 	void spawnEnemy(sf::Vector2f& t_pos, unsigned number);
 
