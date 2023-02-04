@@ -2,7 +2,7 @@
 #define GAME_H
 
 #include "Globals.h"
-#include "ExampleScene.h"
+#include "mainMenu.h"
 #include "ExampleTransitionScene.h"
 #include "SceneManager.h"
 

@@ -27,7 +27,7 @@
     <ClInclude Include="include\SceneManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\ExampleScene.h">
+    <ClInclude Include="include\mainMenu.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="include\ExampleTransitionScene.h">
@@ -38,7 +38,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\ExampleScene.cpp">
+    <ClCompile Include="src\mainMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\ExampleTransitionScene.cpp">

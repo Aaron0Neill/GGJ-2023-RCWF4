@@ -129,7 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\ExampleScene.h" />
+    <ClInclude Include="include\mainMenu.h" />
     <ClInclude Include="include\ExampleTransitionScene.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Globals.h" />
@@ -137,7 +137,7 @@
     <ClInclude Include="include\SceneManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\ExampleScene.cpp" />
+    <ClCompile Include="src\mainMenu.cpp" />
     <ClCompile Include="src\ExampleTransitionScene.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />

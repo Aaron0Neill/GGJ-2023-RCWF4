@@ -10,7 +10,7 @@ void Game::init()
 	m_manager = SceneManager::getInstance();
 	m_manager->setWindow(m_window);
 
-	m_manager->registerScene<ExampleScene>(SceneTypes::EXAMPLE);
+	m_manager->registerScene<mainMenu>(SceneTypes::EXAMPLE);
 	m_manager->registerScene<ExampleTransitionScene>(SceneTypes::EXAMPLE_TRANS);
 
 	m_manager->setScene(SceneTypes::EXAMPLE);
