@@ -136,6 +136,7 @@
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Globals.h" />
     <ClInclude Include="include\IBaseScene.h" />
+    <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\SceneManager.h" />
     <ClInclude Include="include\SpellManager.h" />
   </ItemGroup>
@@ -147,6 +148,7 @@
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\SpellManager.cpp" />
+    <ClCompile Include="src\Player.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

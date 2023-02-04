@@ -4,6 +4,8 @@
 #include "SceneManager.h"
 #include "EnemyManager.h"
 
+#include "Player.h"
+
 class ExampleScene :
 	public IBaseScene
 {
@@ -19,6 +21,7 @@ public:
 
 private:
 	EnemyManager m_manager;
+	Player m_player;
 };
 
 #endif
