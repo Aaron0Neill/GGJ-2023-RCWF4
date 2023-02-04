@@ -3,14 +3,14 @@
 #include <SFML/Graphics.hpp>
 #include "Globals.h"
 #include <iostream>
+#include "SpellManager.h"
 
-class Player : 
-	public sf::Drawable
+class Player
 {
 public: 
 	Player(sf::RenderWindow* t_window);
 
-	void draw(sf::RenderTarget& const t_target, sf::RenderStates t_state) const override;
+	void render(sf::RenderWindow* t_window);
 
 	void update(sf::Time& const t_dt);
 
@@ -19,6 +19,8 @@ public:
 	void jump();
 
 	void fall();
+
+	void fireSpell();
 private:
 	void checkLevel();
 
@@ -40,4 +42,5 @@ private:
 	bool m_jump{ false };
 
 	sf::RenderWindow* m_window;
+	SpellManager m_spellManager;
 };

@@ -44,7 +44,7 @@ void ExampleScene::render()
 	m_window->clear(sf::Color(100, 100, 100, 255));
 
 	m_manager.render(m_window);
-	m_window->draw(m_player);
+	m_player.render(m_window);
 
 	m_window->display();
 }

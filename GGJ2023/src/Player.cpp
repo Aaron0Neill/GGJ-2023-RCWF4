@@ -16,11 +16,11 @@ Player::Player(sf::RenderWindow* t_window) :
 
 //************************************************************************
 
-void Player::draw(sf::RenderTarget& const t_target, sf::RenderStates t_state) const
+void Player::render(sf::RenderWindow* t_window)
 {
-	t_target.draw(m_body);
+	t_window->draw(m_body);
 
-	t_target.draw(m_trackingLine);
+	m_spellManager.render(t_window);
 }
 
 //************************************************************************
@@ -36,6 +36,7 @@ void Player::update(sf::Time& const t_dt)
 		m_trackingLine[0].position = currentPos + m_offset;
 		checkLevel();
 	}
+	m_spellManager.update(t_dt);
 }
 
 //************************************************************************
@@ -44,6 +45,10 @@ void Player::handleEvents(sf::Event& t_event)
 {
 	if (sf::Event::MouseMoved == t_event.type)
 		updateTracking();
+
+	if (sf::Event::MouseButtonPressed == t_event.type)
+		if (sf::Mouse::Left == t_event.mouseButton.button)
+			fireSpell();
 
 	if (sf::Event::KeyPressed == t_event.type)
 		if (sf::Keyboard::Space == t_event.key.code)
@@ -67,6 +72,16 @@ void Player::fall()
 	{
 		m_velocity = -0.01f;
 	}
+}
+
+void Player::fireSpell()
+{
+	sf::Vector2f spawnPoint = m_body.getPosition() + m_offset;
+	sf::Vector2f targetPoint = m_trackingLine[1].position;
+
+	sf::Vector2f direction = calculateDirection(spawnPoint, targetPoint);
+
+	m_spellManager.addSpell(SpellTypes::FIRE_BALL, direction, spawnPoint);
 }
 
 void Player::checkLevel()

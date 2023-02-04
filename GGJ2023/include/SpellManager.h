@@ -5,28 +5,8 @@
 #include <unordered_map>
 #include <functional>
 
-class Spell
-{
-public:
-	Spell()
-	{
-		timeToLive = 2;
-		std::cout << "Spell was created.\n";
-	}
-
-	~Spell()
-	{
-		std::cout << "Spell was deleted.\n";
-
-	}
-
-	void update(sf::Time t_dt)
-	{
-		timeToLive -= t_dt.asSeconds();
-	}
-	float timeToLive;
-};
-
+#include "IBaseSpell.h"
+#include "Fireball.h"
 
 enum class SpellTypes 
 {
@@ -43,10 +23,10 @@ public:
 
 	void render(sf::RenderWindow* t_window);
 
-	void addSpell(SpellTypes const& t_spellType);
+	void addSpell(SpellTypes const& t_spellType, sf::Vector2f t_direction, sf::Vector2f t_position);
 
 private:
-	std::unordered_map<SpellTypes, std::function<Spell* ()>> m_spellMap;
+	std::unordered_map<SpellTypes, std::function<IBaseSpell* (sf::Vector2f, sf::Vector2f)>> m_spellMap;
 
-	std::list<Spell*> m_activeSpells;
+	std::list<IBaseSpell*> m_activeSpells;
 };

@@ -133,11 +133,15 @@
     <ClInclude Include="include\EnemyManager.h" />
     <ClInclude Include="include\ExampleScene.h" />
     <ClInclude Include="include\ExampleTransitionScene.h" />
+    <ClInclude Include="include\Fireball.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Globals.h" />
     <ClInclude Include="include\IBaseScene.h" />
+    <ClInclude Include="include\IBaseSpell.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\SceneManager.h" />
+    <ClInclude Include="include\SmoothAnimation.h" />
+    <ClInclude Include="include\SpellList.h" />
     <ClInclude Include="include\SpellManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -145,8 +149,10 @@
     <ClCompile Include="src\EnemyManager.cpp" />
     <ClCompile Include="src\ExampleScene.cpp" />
     <ClCompile Include="src\ExampleTransitionScene.cpp" />
+    <ClCompile Include="src\Fireball.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\SmoothAnimation.cpp" />
     <ClCompile Include="src\SpellManager.cpp" />
     <ClCompile Include="src\Player.cpp" />
   </ItemGroup>

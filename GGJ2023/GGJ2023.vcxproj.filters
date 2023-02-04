@@ -16,6 +16,12 @@
     <Filter Include="Header Files\Scenes">
       <UniqueIdentifier>{3201256d-d650-420f-b5be-19de40250ae5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Spells">
+      <UniqueIdentifier>{02dcc07d-e5dd-4451-a250-dd78447da6f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Spells">
+      <UniqueIdentifier>{2e937c24-88da-4cc9-a738-5c52dda9f32d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Game.h">
@@ -43,10 +49,22 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\EnemyManager.h">
-    <Filter>Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Player.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SpellList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SmoothAnimation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IBaseSpell.h">
+      <Filter>Header Files\Spells</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Fireball.h">
+      <Filter>Header Files\Spells</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +91,12 @@
     </ClCompile>
     <ClCompile Include="src\Player.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SmoothAnimation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Fireball.cpp">
+      <Filter>Source Files\Spells</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

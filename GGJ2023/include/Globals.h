@@ -12,4 +12,14 @@ const unsigned VIEW_HEIGHT = 1080U;
 const unsigned GROUND_Y = VIEW_HEIGHT - 43;
 const unsigned BRANCH_Y = VIEW_HEIGHT / 2;
 
+static sf::Vector2f calculateDirection(sf::Vector2f t_pos, sf::Vector2f t_target)
+{
+	sf::Vector2f directionalVector = t_target - t_pos;
+	float vectorLength = sqrt(powf(directionalVector.x, 2) + powf(directionalVector.y, 2));
+	sf::Vector2f unitVector;
+	if (vectorLength != 0)
+		unitVector = directionalVector / vectorLength;
+	return unitVector;
+}
+
 #endif
