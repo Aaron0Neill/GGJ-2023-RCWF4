@@ -48,6 +48,7 @@ void ExampleScene::render()
 	m_window->clear(sf::Color(100, 100, 100, 255));
 
 	m_window->draw(m_startScreenText);
+	m_window->draw(m_quitScreenText);
 
 	m_window->display();
 
@@ -59,8 +60,14 @@ void ExampleScene::checkMousePosition(sf::Event t_event)
 	
 	if (m_startScreenText.getGlobalBounds().contains(mousePos))
 	{
+		std::cout << "Change" << std::endl;
 		auto manager = SceneManager::getInstance();
 		manager->setScene(SceneTypes::EXAMPLE_TRANS);
+	}
+	else if (m_quitScreenText.getGlobalBounds().contains(mousePos))
+	{
+		std::cout << "Closed" << std::endl;
+		m_window->close();
 	}
 }
 
@@ -79,4 +86,14 @@ void ExampleScene::setupText()
 	m_startScreenText.setOutlineColor(sf::Color::Black);
 	m_startScreenText.setFillColor(sf::Color::White);
 	m_startScreenText.setOutlineThickness(1.0f);
+
+	m_quitScreenText.setFont(m_font);
+	m_quitScreenText.setString("Quit");
+	m_quitScreenText.setStyle(sf::Text::Italic | sf::Text::Bold);
+	m_quitScreenText.setOrigin(100.0f, 40.0f);
+	m_quitScreenText.setPosition(VIEW_WIDTH / 2.f, VIEW_HEIGHT / 2.f + 100.f);
+	m_quitScreenText.setCharacterSize(50U);
+	m_quitScreenText.setOutlineColor(sf::Color::Black);
+	m_quitScreenText.setFillColor(sf::Color::White);
+	m_quitScreenText.setOutlineThickness(1.0f);
 }

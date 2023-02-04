@@ -19,6 +19,7 @@ public:
 private:
 	sf::Font m_font;
 	sf::Text m_startScreenText;
+	sf::Text m_quitScreenText;
 	void checkMousePosition(sf::Event t_event);
 	void setupText();
 };
