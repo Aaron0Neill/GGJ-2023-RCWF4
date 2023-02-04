@@ -22,17 +22,25 @@ void ExampleScene::handleEvents()
 				manager->setScene(SceneTypes::EXAMPLE_TRANS);
 				return;
 			}
+			else if (sf::Keyboard::Num2 == e.key.code)
+				m_manager.spawnWave();
+			else if (sf::Keyboard::Num3 == e.key.code)
+				m_manager.testRemove();
+
 	}
 }
 
 void ExampleScene::update(sf::Time t_dt)
 {
+	m_manager.update(t_dt);
 }
 
 
 void ExampleScene::render()
 {
 	m_window->clear(sf::Color(100, 100, 100, 255));
+
+	m_manager.render(m_window);
 
 	m_window->display();
 }

@@ -2,6 +2,7 @@
 #define EXAMPLE_SCENE_H
 
 #include "SceneManager.h"
+#include "EnemyManager.h"
 
 class ExampleScene :
 	public IBaseScene
@@ -17,6 +18,7 @@ public:
 	void render()override;
 
 private:
+	EnemyManager m_manager;
 };
 
 #endif

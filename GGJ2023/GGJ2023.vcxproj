@@ -129,6 +129,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\Enemy.h" />
+    <ClInclude Include="include\EnemyManager.h" />
     <ClInclude Include="include\ExampleScene.h" />
     <ClInclude Include="include\ExampleTransitionScene.h" />
     <ClInclude Include="include\Game.h" />
@@ -138,6 +140,8 @@
     <ClInclude Include="include\SpellManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Enemy.cpp" />
+    <ClCompile Include="src\EnemyManager.cpp" />
     <ClCompile Include="src\ExampleScene.cpp" />
     <ClCompile Include="src\ExampleTransitionScene.cpp" />
     <ClCompile Include="src\Game.cpp" />
