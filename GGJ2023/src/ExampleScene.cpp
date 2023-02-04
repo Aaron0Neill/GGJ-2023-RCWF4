@@ -25,7 +25,7 @@ void ExampleScene::handleEvents()
 	}
 }
 
-void ExampleScene::update()
+void ExampleScene::update(sf::Time t_dt)
 {
 }
 

@@ -14,7 +14,7 @@ public:
 	virtual ~IBaseScene() = default;
 
 	virtual void handleEvents() = 0;
-	virtual void update() = 0;
+	virtual void update(sf::Time t_dt) = 0;
 	virtual void render() = 0;
 
 protected:

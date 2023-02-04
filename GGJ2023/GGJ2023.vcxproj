@@ -135,12 +135,14 @@
     <ClInclude Include="include\Globals.h" />
     <ClInclude Include="include\IBaseScene.h" />
     <ClInclude Include="include\SceneManager.h" />
+    <ClInclude Include="include\SpellManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ExampleScene.cpp" />
     <ClCompile Include="src\ExampleTransitionScene.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\SpellManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

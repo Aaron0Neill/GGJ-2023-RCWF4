@@ -12,7 +12,7 @@ public:
 
 	void handleEvents()override;
 
-	void update()override;
+	void update(sf::Time t_dt)override;
 
 	void render()override;
 

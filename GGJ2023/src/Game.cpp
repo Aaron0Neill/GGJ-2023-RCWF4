@@ -18,13 +18,24 @@ void Game::init()
 
 void Game::run()
 {
+	sf::Clock clock;
+	sf::Time lag = sf::Time::Zero;
+	const sf::Time MS_PER_UPDATE = sf::seconds(1 / 60.0f);
 
 	while (m_window->isOpen())
-	{ // update the active scene
+	{
+		sf::Time dT = clock.restart();
+		lag += dT;
+
 		m_manager->handleEvents();
-		
-		m_manager->update();
-		
+
+		while (lag > MS_PER_UPDATE)
+		{
+			m_manager->update(MS_PER_UPDATE);
+			lag -= MS_PER_UPDATE;
+		}
+
+		m_manager->update(dT);
 		m_manager->render();
 	}
 }

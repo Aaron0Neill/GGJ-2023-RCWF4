@@ -4,6 +4,7 @@ ExampleTransitionScene::ExampleTransitionScene(sf::RenderWindow* t_window) :
 	IBaseScene(t_window)
 {
 	std::cout << "Example TransitionScene Created\n";
+	m_manager.addSpell(SpellTypes::FIRE_BALL);
 }
 
 void ExampleTransitionScene::handleEvents()
@@ -24,8 +25,9 @@ void ExampleTransitionScene::handleEvents()
 	}
 }
 
-void ExampleTransitionScene::update()
+void ExampleTransitionScene::update(sf::Time t_dt)
 {
+	m_manager.update(t_dt);
 }
 
 void ExampleTransitionScene::render()

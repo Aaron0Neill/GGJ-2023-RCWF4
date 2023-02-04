@@ -47,7 +47,7 @@ public:
 
 	void handleEvents() { m_currentScene->handleEvents(); };
 
-	void update() { m_currentScene->update(); };
+	void update(sf::Time t_dt) { m_currentScene->update(t_dt); };
 
 	void render() { m_currentScene->render(); };
 
