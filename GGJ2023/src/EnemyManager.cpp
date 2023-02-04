@@ -2,6 +2,10 @@
 
 EnemyManager::EnemyManager()
 {
+	if (!m_enemyTexture.loadFromFile("EnemyRun.png"))
+	{
+		std::cout << "ERROR LOADING ENEMY RUNNING TEXTURE\n";
+	}
 }
 
 EnemyManager::~EnemyManager()
@@ -11,7 +15,7 @@ EnemyManager::~EnemyManager()
 void EnemyManager::spawnWave()
 {
 	std::cout << "*****\nSpawning Wave: " << m_wave << "\n*****\n";
-	sf::Vector2f startPos = { 1920,GROUND_Y - 200 };
+	sf::Vector2f startPos = { 1920,GROUND_Y };
 	switch (m_wave)
 	{
 	case 4:
@@ -67,7 +71,7 @@ void EnemyManager::spawnEnemy(sf::Vector2f& t_pos, unsigned number)
 {
 	for (int i = 0; i < number; ++i)
 	{
-		m_enemyList.push_back(new Enemy(t_pos));
+		m_enemyList.push_back(new Enemy(m_enemyTexture, t_pos));
 		t_pos.x += rand() % 100 + 51;
 	}
 }

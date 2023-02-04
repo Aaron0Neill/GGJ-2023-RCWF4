@@ -15,10 +15,13 @@ public:
 	virtual void render(sf::RenderWindow* t_window) = 0;
 	virtual int getDmg() { return m_damage; }
 	virtual float getTimeToLive() { return m_timeToLive; }
+	virtual float getCooldown() = 0;
+	virtual void setCooldown() =0;
 
 	virtual sf::FloatRect getGlobalBounds() = 0;
 
 protected:
+	friend class SpellManager;
 	sf::Vector2f m_direction;
 	float m_speed;
 	float m_cooldown;

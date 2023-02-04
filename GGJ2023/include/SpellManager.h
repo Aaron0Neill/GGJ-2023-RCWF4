@@ -24,7 +24,7 @@ public:
 
 	void render(sf::RenderWindow* t_window);
 
-	void addSpell(SpellTypes const& t_spellType, sf::Vector2f t_direction, sf::Vector2f t_position);
+	bool addSpell(SpellTypes const& t_spellType, sf::Vector2f t_direction, sf::Vector2f t_position);
 
 	std::list<IBaseSpell*>& const getSpells() { return m_activeSpells; }
 

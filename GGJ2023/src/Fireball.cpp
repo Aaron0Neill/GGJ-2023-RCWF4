@@ -1,15 +1,17 @@
 #include "Fireball.h"
 
+float Fireball::m_cooldown = 0;
+bool Fireball::m_modified = false;
+
 Fireball::Fireball(sf::Vector2f t_direction, sf::Vector2f t_position) :
 	IBaseSpell(t_direction, t_position)
 {
-	std::cout << "Fireball Created\n";
-	m_body.setRadius(20.0f);
+	m_body.setRadius(10.f);
 	m_body.setFillColor(sf::Color::Red);
 	m_body.setPosition(t_position);
-	m_speed = 150;
-	m_timeToLive = 10;
 	m_damage = 5;
+	m_speed = 500;
+	m_timeToLive = 3.f;
 }
 
 void Fireball::update(sf::Time t_dt)
@@ -19,6 +21,12 @@ void Fireball::update(sf::Time t_dt)
 	m_body.setPosition(currentPos);
 
 	m_timeToLive -= t_dt.asSeconds();
+	if (m_cooldown > 0 && !m_modified)
+	{
+		m_cooldown -= t_dt.asSeconds();
+		m_modified = true;
+	}
+
 }
 
 void Fireball::render(sf::RenderWindow* t_window)
