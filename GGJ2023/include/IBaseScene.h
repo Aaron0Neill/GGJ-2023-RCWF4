@@ -2,7 +2,7 @@
 #define IBASE_SCENE_H
 
 #include <iostream>
-
+#include"Globals.h"
 #include <SFML/Graphics.hpp>
 
 class IBaseScene
