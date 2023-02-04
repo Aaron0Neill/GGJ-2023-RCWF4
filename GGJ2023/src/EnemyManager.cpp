@@ -11,7 +11,7 @@ EnemyManager::~EnemyManager()
 void EnemyManager::spawnWave()
 {
 	std::cout << "*****\nSpawning Wave: " << m_wave << "\n*****\n";
-	sf::Vector2f startPos = { 1920,880 };
+	sf::Vector2f startPos = { 1920,GROUND_Y - 200 };
 	switch (m_wave)
 	{
 	case 4:

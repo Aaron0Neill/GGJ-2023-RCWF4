@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <list>
+#include "Globals.h"
 #include "Enemy.h"
 
 class EnemyManager

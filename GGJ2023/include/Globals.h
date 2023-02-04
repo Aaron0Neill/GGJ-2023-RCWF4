@@ -9,4 +9,7 @@ const unsigned WINDOW_HEIGHT = sf::VideoMode::getDesktopMode().height / 4.f * 3.
 const unsigned VIEW_WIDTH = 1920U;
 const unsigned VIEW_HEIGHT = 1080U;
 
+const unsigned GROUND_Y = VIEW_HEIGHT - 43;
+const unsigned BRANCH_Y = VIEW_HEIGHT / 2;
+
 #endif

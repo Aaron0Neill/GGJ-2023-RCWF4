@@ -34,6 +34,7 @@ void ExampleScene::handleEvents()
 
 void ExampleScene::update(sf::Time t_dt)
 {
+	m_player.update(t_dt);
 	m_manager.update(t_dt);
 }
 
