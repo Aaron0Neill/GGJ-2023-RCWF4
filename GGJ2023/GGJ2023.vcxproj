@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SFML_SDK)/include;include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SFML_SDK)/include;include;.</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,8 +143,10 @@
     <ClInclude Include="include\SmoothAnimation.h" />
     <ClInclude Include="include\SpellList.h" />
     <ClInclude Include="include\SpellManager.h" />
+    <ClInclude Include="SeedPellet.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SeedPellet.cpp" />
     <ClCompile Include="src\Enemy.cpp" />
     <ClCompile Include="src\EnemyManager.cpp" />
     <ClCompile Include="src\ExampleScene.cpp" />

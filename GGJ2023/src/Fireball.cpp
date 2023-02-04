@@ -4,11 +4,11 @@ Fireball::Fireball(sf::Vector2f t_direction, sf::Vector2f t_position) :
 	IBaseSpell(t_direction, t_position)
 {
 	std::cout << "Fireball Created\n";
-	m_body.setRadius(10.f);
+	m_body.setRadius(20.0f);
 	m_body.setFillColor(sf::Color::Red);
 	m_body.setPosition(t_position);
-	m_speed = 50;
-	m_timeToLive = 3;
+	m_speed = 150;
+	m_timeToLive = 10;
 }
 
 void Fireball::update(sf::Time t_dt)

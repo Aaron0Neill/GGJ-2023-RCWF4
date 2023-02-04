@@ -66,6 +66,9 @@
     <ClInclude Include="include\Fireball.h">
       <Filter>Header Files\Spells</Filter>
     </ClInclude>
+    <ClInclude Include="SeedPellet.h">
+      <Filter>Header Files\Spells</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ExampleScene.cpp">
@@ -96,6 +99,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Fireball.cpp">
+      <Filter>Source Files\Spells</Filter>
+    </ClCompile>
+    <ClCompile Include="SeedPellet.cpp">
       <Filter>Source Files\Spells</Filter>
     </ClCompile>
   </ItemGroup>
