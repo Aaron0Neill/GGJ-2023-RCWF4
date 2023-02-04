@@ -1,17 +1,13 @@
 #include "Enemy.h"
 
-Enemy::Enemy() : 
-	Enemy({1920,880})
+Enemy::Enemy(sf::Texture& t_texture, sf::Vector2f t_startPos) : 
+	m_sprite(t_texture)
 {
-}
-
-Enemy::Enemy(sf::Vector2f t_startPos)
-{
-	m_body.setSize({ 50,200 });
-	m_body.setPosition(t_startPos);
-	m_body.setFillColor(sf::Color::Red);
-
-	std::cout << "Enemy Created\n";
+	m_sprite.setScale(-5, 5);
+	sf::FloatRect size = m_sprite.getGlobalBounds();
+	m_sprite.setPosition(t_startPos - sf::Vector2f{0, size.height});
+	m_sprite.addRow(AnimationStates::RUN, { 0,0,64, 22 }, 7);
+	m_sprite.setState(AnimationStates::RUN);
 }
 
 Enemy::~Enemy()
@@ -21,12 +17,14 @@ Enemy::~Enemy()
 
 void Enemy::update(sf::Time t_dt)
 {
-	sf::Vector2f pos = m_body.getPosition();
+	sf::Vector2f pos = m_sprite.getPosition();
 	pos.x -= m_movementSpeed * t_dt.asSeconds();
-	m_body.setPosition(pos);
+	m_sprite.setPosition(pos);
+
+	m_sprite.update(t_dt);
 }
 
 void Enemy::render(sf::RenderWindow* t_window)
 {
-	t_window->draw(m_body);
+	t_window->draw(m_sprite);
 }

@@ -1,24 +1,24 @@
 #include "Player.h"
 
 Player::Player(sf::RenderWindow* t_window) :
-	m_window(t_window), 
-	m_trackingLine(sf::Lines)
+	m_window(t_window)
 {
-	m_body.setSize({ 50,200 });
-	m_body.setPosition({ 100, GROUND_Y - 200 });
+	m_texture.loadFromFile("PlayerSpriteSheet.png");
 
-	m_trackingLine.resize(2);
-	m_trackingLine[0].position = m_body.getPosition() + m_offset;
-
-	for (int i = 0; i < 2; ++i)
-		m_trackingLine[i].color = sf::Color::Red;
+	m_sprite.setTexture(m_texture);
+	m_sprite.addRow(AnimationStates::IDLE, { 15*64,0,64,38 }, 5);
+	m_sprite.addRow(AnimationStates::FALL, { 13*64,0,64,38 }, 2);
+	m_sprite.addRow(AnimationStates::ATTACK, { 0,0,64,38 }, 6);
+	m_sprite.setState(AnimationStates::IDLE);
+	m_sprite.setScale(5.f, 5.f);
+	m_sprite.setPosition({ 100,GROUND_Y - m_sprite.getGlobalBounds().height});
 }
 
 //************************************************************************
 
 void Player::render(sf::RenderWindow* t_window)
 {
-	t_window->draw(m_body);
+	t_window->draw(m_sprite);
 
 	m_spellManager.render(t_window);
 }
@@ -29,13 +29,24 @@ void Player::update(sf::Time& const t_dt)
 {
 	if (m_velocity != 0)
 	{
-		sf::Vector2f currentPos = m_body.getPosition();
+		if (m_sprite.getState() != AnimationStates::FALL)
+			m_sprite.setState(AnimationStates::FALL);
+		sf::Vector2f currentPos = m_sprite.getPosition();
 		currentPos.y -= m_velocity;
 		m_velocity -= 1.f * t_dt.asSeconds();
-		m_body.setPosition(currentPos);
-		m_trackingLine[0].position = currentPos + m_offset;
+		m_sprite.setPosition(currentPos);
 		checkLevel();
 	}
+
+	if (m_sprite.getState() == AnimationStates::ATTACK)
+	{
+		m_attackTimer -= t_dt.asSeconds();
+		if (m_attackTimer <= 0)
+		{
+			m_sprite.setState(AnimationStates::IDLE);
+		}
+	}
+	m_sprite.update(t_dt);
 	m_spellManager.update(t_dt);
 }
 
@@ -48,7 +59,12 @@ void Player::handleEvents(sf::Event& t_event)
 
 	if (sf::Event::MouseButtonPressed == t_event.type)
 		if (sf::Mouse::Left == t_event.mouseButton.button)
-			fireSpell();
+			if (fireSpell())
+			{
+				m_sprite.setState(AnimationStates::ATTACK);
+				m_attackTimer = 6.0f * 0.25f;
+			}
+		
 
 	if (sf::Event::KeyPressed == t_event.type)
 		if (sf::Keyboard::Space == t_event.key.code)
@@ -59,7 +75,7 @@ void Player::handleEvents(sf::Event& t_event)
 
 void Player::jump()
 {
-	if (m_body.getPosition().y + m_body.getSize().y > BRANCH_Y)
+	if (m_sprite.getPosition().y + m_sprite.getGlobalBounds().height > BRANCH_Y)
 	{
 		m_velocity = m_jumpSpeed;
 		m_jump = true;
@@ -68,35 +84,41 @@ void Player::jump()
 
 void Player::fall()
 {
-	if (m_body.getPosition().y + m_body.getSize().y < GROUND_Y  && !m_jump)
-	{
+	if (m_sprite.getPosition().y + m_sprite.getGlobalBounds().height < GROUND_Y  && !m_jump)
 		m_velocity = -0.01f;
-	}
 }
 
-void Player::fireSpell()
+bool Player::fireSpell()
 {
-	sf::Vector2f spawnPoint = m_body.getPosition() + m_offset;
-	sf::Vector2f targetPoint = m_trackingLine[1].position;
+	sf::Vector2f spawnPoint = m_sprite.getPosition() + m_offset;
+	sf::Vector2f targetPoint = m_mousePos;
 
 	sf::Vector2f direction = calculateDirection(spawnPoint, targetPoint);
 
-	m_spellManager.addSpell(SpellTypes::FIRE_BALL, direction, spawnPoint);
+	return m_spellManager.addSpell(SpellTypes::FIRE_BALL, direction, spawnPoint);
 }
 
 void Player::checkLevel()
 {
-	float level = m_body.getPosition().y + m_body.getSize().y;
+	bool stateChanged = false;
+	float height = m_sprite.getGlobalBounds().height;
+	float level = m_sprite.getPosition().y + height;
 	if (level > BRANCH_Y && m_velocity < 0 && m_jump)
 	{
+		stateChanged = true;
 		m_jump = false; 
-		m_body.setPosition({ m_body.getPosition().x, BRANCH_Y - m_body.getSize().y});
-		m_velocity = 0;
+		m_sprite.setPosition({ m_sprite.getPosition().x, BRANCH_Y - height });
 	}
 	else if (level > GROUND_Y)
 	{
-		m_body.setPosition({ m_body.getPosition().x, GROUND_Y - m_body.getSize().y });
+		stateChanged = true;
+		m_sprite.setPosition({ m_sprite.getPosition().x, GROUND_Y - height });
+	}
+
+	if (stateChanged)
+	{
 		m_velocity = 0;
+		m_sprite.setState(AnimationStates::IDLE);
 	}
 }
 
@@ -105,5 +127,4 @@ void Player::checkLevel()
 void Player::updateTracking()
 {
 	m_mousePos = m_window->mapPixelToCoords(sf::Mouse::getPosition(*m_window));
-	m_trackingLine[1].position = m_mousePos;
 }

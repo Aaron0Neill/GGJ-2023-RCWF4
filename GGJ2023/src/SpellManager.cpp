@@ -6,9 +6,18 @@ SpellManager::SpellManager()
 	m_spellMap[SpellTypes::LIGHTNING] = [](sf::Vector2f t_direction, sf::Vector2f t_position) { return new Fireball(t_direction, t_position); };
 }
 
-void SpellManager::addSpell(SpellTypes const& t_spellType, sf::Vector2f t_direction, sf::Vector2f t_position)
+bool SpellManager::addSpell(SpellTypes const& t_spellType, sf::Vector2f t_direction, sf::Vector2f t_position)
 {
-	m_activeSpells.push_back(m_spellMap[t_spellType](t_direction, t_position));
+	IBaseSpell* spell = m_spellMap[t_spellType](t_direction, t_position);
+
+	if (spell->getCooldown() > 0)
+	{
+		delete spell;
+		return false;
+	}
+	m_activeSpells.push_back(spell);
+	spell->setCooldown();
+	return true;
 }
 
 void SpellManager::update(sf::Time t_dt)
@@ -24,6 +33,7 @@ void SpellManager::update(sf::Time t_dt)
 		}
 		return false;
 		});
+	Fireball::m_modified = false;
 }
 
 void SpellManager::render(sf::RenderWindow* t_window)

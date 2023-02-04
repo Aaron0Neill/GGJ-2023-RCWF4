@@ -2,12 +2,12 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "AnimatedSprite.h"
 
 class Enemy
 {
 public: 
-	Enemy();
-	Enemy(sf::Vector2f t_startPos);
+	Enemy(sf::Texture& t_texture, sf::Vector2f t_startPos);
 	~Enemy();
 
 	void update(sf::Time t_dt);
@@ -16,7 +16,8 @@ public:
 
 private:
 	friend class EnemyManager;
-	float m_movementSpeed { 100.0f };
+	float m_movementSpeed { 75.0f };
 
-	sf::RectangleShape m_body;
+	AnimatedSprite m_sprite;
+	sf::Texture m_texture;
 };

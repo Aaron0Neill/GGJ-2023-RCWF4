@@ -4,6 +4,7 @@
 #include "Globals.h"
 #include <iostream>
 #include "SpellManager.h"
+#include "AnimatedSprite.h"
 
 class Player
 {
@@ -20,18 +21,14 @@ public:
 
 	void fall();
 
-	void fireSpell();
+	bool fireSpell();
 private:
 	void checkLevel();
 
 	void updateTracking();
 
-	/// <summary>
-	/// Sample body <REPLACE WITH A SPRITE>
-	/// </summary>
-	sf::RectangleShape m_body;
-
-	sf::VertexArray m_trackingLine;
+	sf::Texture m_texture;
+	AnimatedSprite m_sprite;
 
 	sf::Vector2f m_mousePos;
 
@@ -40,6 +37,8 @@ private:
 	float m_velocity;
 	float m_jumpSpeed{0.75f};
 	bool m_jump{ false };
+
+	float m_attackTimer;
 
 	sf::RenderWindow* m_window;
 	SpellManager m_spellManager;

@@ -12,6 +12,12 @@ public:
 
 	virtual void update(sf::Time t_dt)override;
 	virtual void render(sf::RenderWindow* t_window)override;
+
+	virtual float getCooldown()override { return m_cooldown; }
+	virtual void setCooldown() { m_cooldown = 1.0f; }
 private:
+	friend class SpellManager;
 	sf::CircleShape m_body;
+	static float m_cooldown;
+	static bool m_modified;
 };

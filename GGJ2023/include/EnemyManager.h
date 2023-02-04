@@ -28,4 +28,6 @@ private:
 	bool m_waveRunning{ false };
 
 	std::list<Enemy*> m_enemyList;
+
+	sf::Texture m_enemyTexture;
 };
