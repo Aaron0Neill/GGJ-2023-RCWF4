@@ -20,8 +20,13 @@ private:
 	sf::Font m_font;
 	sf::Text m_startScreenText;
 	sf::Text m_quitScreenText;
+	sf::Texture m_splashScreen;
+	sf::Sprite m_splashScreenS;
+	sf::Texture m_floorT;
+	sf::Sprite m_floorS;
 	void checkMousePosition(sf::Event t_event);
 	void setupText();
+	void setupSprite();
 };
 
 #endif

@@ -7,6 +7,7 @@ ExampleScene::ExampleScene(sf::RenderWindow* t_window) :
 	std::cout << "ExampleScene created\n";
 
 	setupText();
+	setupSprite();
 }
 
 void ExampleScene::handleEvents()
@@ -45,10 +46,12 @@ void ExampleScene::update()
 
 void ExampleScene::render()
 {
-	m_window->clear(sf::Color(100, 100, 100, 255));
+	m_window->clear(sf::Color(102, 229, 243, 255));
 
 	m_window->draw(m_startScreenText);
 	m_window->draw(m_quitScreenText);
+	m_window->draw(m_splashScreenS);
+	m_window->draw(m_floorS);
 
 	m_window->display();
 
@@ -96,4 +99,23 @@ void ExampleScene::setupText()
 	m_quitScreenText.setOutlineColor(sf::Color::Black);
 	m_quitScreenText.setFillColor(sf::Color::White);
 	m_quitScreenText.setOutlineThickness(1.0f);
+}
+
+void ExampleScene::setupSprite()
+{
+	if (!m_splashScreen.loadFromFile("ASSETS\\IMAGES\\SplashScreen.png"))
+	{
+		std::cout << "Couldnt load splashscreen" << std::endl;
+	}
+	m_splashScreenS.setTexture(m_splashScreen);
+	m_splashScreenS.setOrigin(425.f, 200.f);
+	m_splashScreenS.setPosition(sf::Vector2f(VIEW_WIDTH / 2.f, 200.f));
+
+	if (!m_floorT.loadFromFile("ASSETS\\IMAGES\\Floor.png"))
+	{
+		std::cout << "Couldnt load floor texture" << std::endl;
+	}
+	m_floorS.setTexture(m_floorT);
+	m_floorS.setOrigin(1000.0f, 23.5f);
+	m_floorS.setPosition(sf::Vector2f(VIEW_WIDTH / 2.f, 1036.5f));
 }
