@@ -2,6 +2,7 @@
 #define EXAMPLE_TRANSITION_SCENE_H
 
 #include "SceneManager.h"
+#include "SpellManager.h"
 
 class ExampleTransitionScene :
 	public IBaseScene
@@ -12,11 +13,12 @@ public:
 
 	void handleEvents()override;
 
-	void update()override;
+	void update(sf::Time t_dt)override;
 
 	void render()override;
 
 private:
+	SpellManager m_manager;
 };
 
 #endif

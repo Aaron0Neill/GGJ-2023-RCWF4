@@ -17,6 +17,7 @@
 
 int main()
 {
+	srand(static_cast<unsigned>(time(nullptr)));
 	Game* game = new Game();
 	game->init();
 	game->run();

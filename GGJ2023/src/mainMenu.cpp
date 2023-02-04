@@ -23,7 +23,7 @@ void mainMenu::handleEvents()
 			if (sf::Keyboard::Num1 == e.key.code)
 			{
 				auto manager = SceneManager::getInstance();
-				manager->setScene(SceneTypes::EXAMPLE_TRANS);
+				manager->setScene(SceneTypes::GAMEPLAY);
 				return;
 			}
 		}
@@ -39,7 +39,7 @@ void mainMenu::handleEvents()
 	}
 }
 
-void mainMenu::update()
+void mainMenu::update(sf::Time t_dt)
 {
 }
 
@@ -84,7 +84,7 @@ void mainMenu::checkMousePosition(sf::Event t_event)
 	{
 		std::cout << "Change" << std::endl;
 		auto manager = SceneManager::getInstance();
-		manager->setScene(SceneTypes::EXAMPLE_TRANS);
+		manager->setScene(SceneTypes::MAIN_MENU);
 	}
 	else if (m_quitScreenText.getGlobalBounds().contains(mousePos))
 	{

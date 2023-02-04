@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SFML_SDK)/include;include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SFML_SDK)/include;include;.</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,17 +130,39 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\mainMenu.h" />
+    <ClInclude Include="GameplayScene.h" />
+    <ClInclude Include="include\AnimatedSprite.h" />
+    <ClInclude Include="include\Enemy.h" />
+    <ClInclude Include="include\EnemyManager.h" />
+    <ClInclude Include="include\ExampleScene.h" />
     <ClInclude Include="include\ExampleTransitionScene.h" />
+    <ClInclude Include="include\Fireball.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Globals.h" />
     <ClInclude Include="include\IBaseScene.h" />
+    <ClInclude Include="include\IBaseSpell.h" />
+    <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\SceneManager.h" />
+    <ClInclude Include="include\SmoothAnimation.h" />
+    <ClInclude Include="include\SpellList.h" />
+    <ClInclude Include="include\SpellManager.h" />
+    <ClInclude Include="SeedPellet.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\mainMenu.cpp" />
+    <ClCompile Include="GameplayScene.cpp" />
+    <ClCompile Include="src\AnimatedSprite.cpp" />
+    <ClCompile Include="SeedPellet.cpp" />
+    <ClCompile Include="src\Enemy.cpp" />
+    <ClCompile Include="src\EnemyManager.cpp" />
+    <ClCompile Include="src\ExampleScene.cpp" />
     <ClCompile Include="src\ExampleTransitionScene.cpp" />
+    <ClCompile Include="src\Fireball.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\SmoothAnimation.cpp" />
+    <ClCompile Include="src\SpellManager.cpp" />
+    <ClCompile Include="src\Player.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

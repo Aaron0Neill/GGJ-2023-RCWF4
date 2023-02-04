@@ -10,21 +10,33 @@ void Game::init()
 	m_manager = SceneManager::getInstance();
 	m_manager->setWindow(m_window);
 
-	m_manager->registerScene<mainMenu>(SceneTypes::EXAMPLE);
+	m_manager->registerScene<mainMenu>(SceneTypes::MAIN_MENU);
 	m_manager->registerScene<ExampleTransitionScene>(SceneTypes::EXAMPLE_TRANS);
+	m_manager->registerScene<GameplayScene>(SceneTypes::GAMEPLAY);
 
-	m_manager->setScene(SceneTypes::EXAMPLE);
+	m_manager->setScene(SceneTypes::MAIN_MENU);
 }
 
 void Game::run()
 {
+	sf::Clock clock;
+	sf::Time lag = sf::Time::Zero;
+	const sf::Time MS_PER_UPDATE = sf::seconds(1 / 60.0f);
 
 	while (m_window->isOpen())
-	{ // update the active scene
+	{
+		sf::Time dT = clock.restart();
+		lag += dT;
+
 		m_manager->handleEvents();
-		
-		m_manager->update();
-		
+
+		while (lag > MS_PER_UPDATE)
+		{
+			m_manager->update(MS_PER_UPDATE);
+			lag -= MS_PER_UPDATE;
+		}
+
+		m_manager->update(dT);
 		m_manager->render();
 	}
 }

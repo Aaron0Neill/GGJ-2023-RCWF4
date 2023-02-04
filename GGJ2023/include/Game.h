@@ -5,6 +5,7 @@
 #include "mainMenu.h"
 #include "ExampleTransitionScene.h"
 #include "SceneManager.h"
+#include "GameplayScene.h"
 
 #include <memory.h>
 

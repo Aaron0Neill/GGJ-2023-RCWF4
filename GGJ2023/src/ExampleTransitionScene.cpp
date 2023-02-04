@@ -18,14 +18,15 @@ void ExampleTransitionScene::handleEvents()
 			if (sf::Keyboard::Num1 == e.key.code)
 			{
 				auto manager = SceneManager::getInstance();
-				manager->setScene(SceneTypes::EXAMPLE);
+				manager->setScene(SceneTypes::MAIN_MENU);
 				break;
 			}
 	}
 }
 
-void ExampleTransitionScene::update()
+void ExampleTransitionScene::update(sf::Time t_dt)
 {
+	m_manager.update(t_dt);
 }
 
 void ExampleTransitionScene::render()
