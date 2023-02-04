@@ -7,6 +7,7 @@
 
 #include "IBaseSpell.h"
 #include "Fireball.h"
+#include "SeedPellet.h"
 
 enum class SpellTypes 
 {

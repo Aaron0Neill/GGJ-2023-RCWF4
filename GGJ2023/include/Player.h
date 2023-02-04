@@ -42,4 +42,5 @@ private:
 
 	sf::RenderWindow* m_window;
 	SpellManager m_spellManager;
+	SpellTypes m_currentSpell;
 };

@@ -71,6 +71,8 @@ void Player::handleEvents(sf::Event& t_event)
 			jump();
 		else if (sf::Keyboard::Down == t_event.key.code)
 			fall();
+		else if (sf::Keyboard::Q == t_event.key.code)
+			m_currentSpell = (m_currentSpell == SpellTypes::FIRE_BALL) ? SpellTypes::LIGHTNING : SpellTypes::FIRE_BALL;
 }
 
 void Player::jump()

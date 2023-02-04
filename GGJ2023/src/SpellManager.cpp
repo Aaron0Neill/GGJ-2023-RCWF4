@@ -3,7 +3,7 @@
 SpellManager::SpellManager()
 {
 	m_spellMap[SpellTypes::FIRE_BALL] = [](sf::Vector2f t_direction, sf::Vector2f t_position) { return new Fireball(t_direction, t_position); };
-	m_spellMap[SpellTypes::LIGHTNING] = [](sf::Vector2f t_direction, sf::Vector2f t_position) { return new Fireball(t_direction, t_position); };
+	m_spellMap[SpellTypes::LIGHTNING] = [](sf::Vector2f t_direction, sf::Vector2f t_position) { return new SeedPellet(t_direction, t_position); };
 }
 
 bool SpellManager::addSpell(SpellTypes const& t_spellType, sf::Vector2f t_direction, sf::Vector2f t_position)
