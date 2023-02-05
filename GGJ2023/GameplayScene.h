@@ -25,6 +25,8 @@ private:
 	sf::Sprite m_floorS;
 	sf::Texture m_treeT;
 	sf::Sprite m_treeS;
+	sf::Text m_screenText;
+	sf::Font m_font;
 	bool done{ false };
 	
 };

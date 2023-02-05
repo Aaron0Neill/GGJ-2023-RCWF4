@@ -21,35 +21,37 @@ void EnemyManager::spawnWave()
 	std::cout << "*****\nSpawning Wave: " << m_wave << "\n*****\n";
 	sf::Vector2f startPos = { 1920,GROUND_Y };
 	sf::Vector2f startPosBird = { 1920,GROUND_Y - 250 };
-	switch (m_wave)
-	{
-	case 8:
-		spawnEnemy(startPos, 50);
-		spawnBird(startPosBird, 50);
-	case 7:
-		spawnEnemy(startPos, 40);
-		spawnBird(startPosBird, 40);
-	case 6:
-		spawnEnemy(startPos, 30);
-		spawnBird(startPosBird, 30);
-	case 5:
-		spawnEnemy(startPos, 24);
-		spawnBird(startPosBird, 24);
-	case 4:
-		spawnEnemy(startPos, 16);
-		spawnBird(startPosBird, 16);
-	case 3: 
-		spawnEnemy(startPos, 4);
-		spawnBird(startPosBird, 4);
-	case 2: 
-		spawnEnemy(startPos, 3);
-		spawnBird(startPosBird, 3);
-	case 1:
-		spawnEnemy(startPos, 1);
-		spawnBird(startPosBird, 1);
-		break;
+	if (!m_waveRunning) {
+		switch (m_wave)
+		{
+		case 8:
+			spawnEnemy(startPos, 50);
+			spawnBird(startPosBird, 50);
+		case 7:
+			spawnEnemy(startPos, 40);
+			spawnBird(startPosBird, 40);
+		case 6:
+			spawnEnemy(startPos, 30);
+			spawnBird(startPosBird, 30);
+		case 5:
+			spawnEnemy(startPos, 24);
+			spawnBird(startPosBird, 24);
+		case 4:
+			spawnEnemy(startPos, 16);
+			spawnBird(startPosBird, 16);
+		case 3:
+			spawnEnemy(startPos, 4);
+			spawnBird(startPosBird, 4);
+		case 2:
+			spawnEnemy(startPos, 3);
+			spawnBird(startPosBird, 3);
+		case 1:
+			spawnEnemy(startPos, 1);
+			spawnBird(startPosBird, 1);
+			break;
+		}
+		m_waveRunning = true;
 	}
-	m_waveRunning = true;
 }
 
 bool EnemyManager::checkForLoss()

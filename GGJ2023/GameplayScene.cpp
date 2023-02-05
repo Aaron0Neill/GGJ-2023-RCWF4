@@ -31,7 +31,7 @@ void GameplayScene::handleEvents()
 					manager->setScene(SceneTypes::MAIN_MENU);
 					return;
 				}
-				else if (sf::Keyboard::Num2 == e.key.code)
+				else if (sf::Keyboard::Enter == e.key.code)
 					m_manager.spawnWave();
 				else if (sf::Keyboard::Num3 == e.key.code)
 					m_manager.testRemove();
@@ -58,8 +58,10 @@ void GameplayScene::render()
 	m_window->clear(sf::Color(102, 229, 243, 255));
 	m_window->draw(m_treeS);
 	m_window->draw(m_floorS);
+	m_window->draw(m_screenText);
 	m_manager.render(m_window);
 	m_player.render(m_window);
+
 	m_window->display();
 
 }
@@ -111,4 +113,18 @@ void GameplayScene::setupScene()
 	m_treeS.setTexture(m_treeT);
 	m_treeS.setScale(10.f, 10.f);
 	m_treeS.setPosition(sf::Vector2f(-450.f,80.f));
+	
+	if (!m_font.loadFromFile("ASSETS\\FONT\\Bangers.ttf"))
+	{
+		std::cout << "Error loading text" << std::endl;
+	}
+	m_screenText.setFont(m_font);
+	m_screenText.setString("PRESS ENTER TO SPAWN NEXT WAVE");
+	m_screenText.setStyle(sf::Text::Italic | sf::Text::Bold);
+	m_screenText.setOrigin(100.0f, 40.0f);
+	m_screenText.setPosition(VIEW_WIDTH / 2.f, VIEW_HEIGHT - 1000.f);
+	m_screenText.setCharacterSize(15U);
+	m_screenText.setOutlineColor(sf::Color::Black);
+	m_screenText.setFillColor(sf::Color::White);
+	m_screenText.setOutlineThickness(1.0f);
 }
