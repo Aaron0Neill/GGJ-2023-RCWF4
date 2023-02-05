@@ -18,7 +18,12 @@ public:
 	void render()override;
 
 private:
+	void setupSprite();
 	SpellManager m_manager;
+	sf::Texture m_floorT;
+	sf::Sprite m_floorS;
+	sf::Texture m_failT;
+	sf::Sprite m_failS;
 };
 
 #endif

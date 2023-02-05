@@ -14,6 +14,8 @@ public:
 
 	void render(sf::RenderWindow* t_window);
 
+	bool isOutOfBounds();
+
 	sf::FloatRect getGlobalBound() { return m_sprite.getGlobalBounds(); }
 
 	int m_health = 5;

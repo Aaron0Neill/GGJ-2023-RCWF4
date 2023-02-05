@@ -33,7 +33,7 @@ private:
 
 	sf::Vector2f m_mousePos;
 
-	sf::Vector2f m_offset{ 25,25 };
+	sf::Vector2f m_offset{ 150,120 };
 
 	float m_velocity;
 	float m_jumpSpeed{0.75f};

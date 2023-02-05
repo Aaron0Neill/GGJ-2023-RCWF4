@@ -1,4 +1,6 @@
 #include "Enemy.h"
+#include "Globals.h"
+#include "GameplayScene.h"
 
 Enemy::Enemy(sf::Texture& t_texture, sf::Vector2f t_startPos) : 
 	m_sprite(t_texture)
@@ -20,6 +22,7 @@ void Enemy::update(sf::Time t_dt)
 	sf::Vector2f pos = m_sprite.getPosition();
 	pos.x -= m_movementSpeed * t_dt.asSeconds();
 	m_sprite.setPosition(pos);
+	
 
 	m_sprite.update(t_dt);
 }
@@ -27,4 +30,17 @@ void Enemy::update(sf::Time t_dt)
 void Enemy::render(sf::RenderWindow* t_window)
 {
 	t_window->draw(m_sprite);
+}
+
+bool Enemy::isOutOfBounds()
+{
+	sf::Vector2f pos = m_sprite.getPosition();
+
+	if (pos.x <= 400)
+	{
+		std::cout << "Exceeded" << std::endl;
+		return true;
+	}
+
+	return false;
 }
