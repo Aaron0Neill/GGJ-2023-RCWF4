@@ -16,6 +16,9 @@ public:
 	void collisionDetector();
 
 private:
+	void setupScene();
 	EnemyManager m_manager;
 	Player m_player;
+	sf::Texture m_floorT;
+	sf::Sprite m_floorS;
 };

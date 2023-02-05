@@ -1,5 +1,6 @@
 #include "SpellManager.h"
 
+
 SpellManager::SpellManager()
 {
 	m_spellMap[SpellTypes::FIRE_BALL] = [](sf::Vector2f t_direction, sf::Vector2f t_position) { return new Fireball(t_direction, t_position); };

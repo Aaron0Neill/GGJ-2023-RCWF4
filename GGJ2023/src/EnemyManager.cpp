@@ -18,8 +18,16 @@ void EnemyManager::spawnWave()
 	sf::Vector2f startPos = { 1920,GROUND_Y };
 	switch (m_wave)
 	{
+	case 8:
+		spawnEnemy(startPos, 50);
+	case 7:
+		spawnEnemy(startPos, 40);
+	case 6:
+		spawnEnemy(startPos, 30);
+	case 5:
+		spawnEnemy(startPos, 24);
 	case 4:
-		spawnEnemy(startPos, 4);
+		spawnEnemy(startPos, 16);
 	case 3: 
 		spawnEnemy(startPos, 4);
 	case 2: 

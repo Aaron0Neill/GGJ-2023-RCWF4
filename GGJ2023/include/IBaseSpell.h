@@ -7,7 +7,7 @@
 class IBaseSpell
 {
 public:
-	IBaseSpell(sf::Vector2f t_direction, sf::Vector2f t_position) : m_damage(1), m_speed(1), m_cooldown(1), m_timeToLive(3), m_direction(t_direction) {}
+	IBaseSpell(sf::Vector2f t_direction, sf::Vector2f t_position) : m_damage(5), m_speed(1), m_cooldown(1), m_timeToLive(3), m_direction(t_direction) {}
 	virtual ~IBaseSpell() {};
 
 	//Functions

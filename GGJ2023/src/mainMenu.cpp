@@ -84,7 +84,7 @@ void mainMenu::checkMousePosition(sf::Event t_event)
 	{
 		std::cout << "Change" << std::endl;
 		auto manager = SceneManager::getInstance();
-		manager->setScene(SceneTypes::MAIN_MENU);
+		manager->setScene(SceneTypes::GAMEPLAY);
 	}
 	else if (m_quitScreenText.getGlobalBounds().contains(mousePos))
 	{

@@ -6,6 +6,7 @@ GameplayScene::GameplayScene(sf::RenderWindow* t_window) :
 	IBaseScene(t_window), m_player(t_window)
 {
 	std::cout << "GameplayScene created\n";
+	setupScene();
 }
 
 void GameplayScene::handleEvents()
@@ -17,10 +18,10 @@ void GameplayScene::handleEvents()
 			m_window->close();
 
 			if (sf::Event::KeyPressed == e.type)
-				if (sf::Keyboard::Num1 == e.key.code)
+				if (sf::Keyboard::Escape == e.key.code)
 				{
 					auto manager = SceneManager::getInstance();
-					manager->setScene(SceneTypes::EXAMPLE_TRANS);
+					manager->setScene(SceneTypes::MAIN_MENU);
 					return;
 				}
 				else if (sf::Keyboard::Num2 == e.key.code)
@@ -42,7 +43,8 @@ void GameplayScene::update(sf::Time t_Time)
 
 void GameplayScene::render()
 {
-	m_window->clear(sf::Color(100, 100, 100, 255));
+	m_window->clear(sf::Color(102, 229, 243, 255));
+	m_window->draw(m_floorS);
 	m_manager.render(m_window);
 	m_player.render(m_window);
 	m_window->display();
@@ -61,8 +63,24 @@ void GameplayScene::collisionDetector()
 			{
 				std::cout << "Collision Detected" << std::endl;
 				Enemy->m_health -= Spell->getDmg();
+				if (Enemy->m_health <= 0)
+				{
+					m_manager.testRemove();
+				}
 			}
 		}
 	}
+
+}
+
+void GameplayScene::setupScene()
+{
+	if (!m_floorT.loadFromFile("ASSETS\\IMAGES\\Floor.png"))
+	{
+		std::cout << "Couldnt load floor texture" << std::endl;
+	}
+	m_floorS.setTexture(m_floorT);
+	m_floorS.setOrigin(1000.0f, 23.5f);
+	m_floorS.setPosition(sf::Vector2f(VIEW_WIDTH / 2.f, 1036.5f));
 
 }

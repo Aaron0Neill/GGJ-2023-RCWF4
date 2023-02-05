@@ -16,7 +16,7 @@ public:
 
 	sf::FloatRect getGlobalBound() { return m_sprite.getGlobalBounds(); }
 
-	int m_health;
+	int m_health = 5;
 
 private:
 	friend class EnemyManager;
